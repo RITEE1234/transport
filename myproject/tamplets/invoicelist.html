@@ -1,0 +1,66 @@
+{% include "header.html" %}
+<div class="pagetitle">
+    <h1>Invoice</h1>
+    <nav>
+        <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item active">Invoice Registration</li>
+        </ol>
+    </nav>
+</div><!-- End Page Title -->
+<section class="section dashboard">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">invoice Registration</h5>
+                    <div class="col-lg-12">
+                        <a class="btn btn-success float-end" href="/invoice">
+                            <i class="bi bi-plus"></i>
+                        </a>
+                    </div>
+
+            <table class="table table-borderless">
+                <thead>
+                    <tr>
+                        <th scope="col">SR.no</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">Invoice No</th>
+                        <th scope="col">Invoice Date</th>
+                        <th scope="col">From</th>
+                        <th scope="col">To</th>
+                        <th scope="col">L.R. no.</th>
+                        <!-- <th scope="col">Dsicriptions</th>
+                        <th scope="col">Qty weight</th>
+                        <th scope="col">Rate</th>
+                        <th scope="col">Amount</th> -->
+                        <th scope="col">Edit</th>
+                        <th scope="col">Delete</th>
+                        <th scope="col"> PDF Genrate</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {%for Billing in query%} 
+                        <tr>
+                            <td>{{forloop.counter}}</td>
+                            <td>{{Billing.name}}</td>
+                            <td>{{Billing.address}} </td>
+                            <td>{{Billing.invoice_number}}</td>
+                            <td>{{Billing.inv_date}}</td>
+                            <td>{{Billing.From}}</td>
+                            <td>{{Billing.To}}</td>
+                            <td>{{Billing.Lr_no}}</td>
+                            <td>{{Billing.truck}}</td>
+                            <!-- <td>{{Billing.Dsicriptions}}</td>
+                            <td>{{Billing.Qty_weight}}</td>
+                            <td>{{Billing.Rate}}</td>
+                            <td>{{Billing.Amount}}</td> -->
+                            <td><a class="btn btn-info" href="/editinvoice/{{Billing.id}}"><i class="bi bi-pencil-fill"></i></a></td>
+                            <td><a class="btn btn-danger"href="/deleteinvoice/{{Billing.id}}"><i class="bi bi-trash"></i></a></td>
+                            <td><a class="btn btn-danger"href="/billformate/{{Billing.id}}"><i class="bi bi-arrow-bar-up"></i></a></td>
+                        </tr>
+                    {%endfor%}
+                </tbody>
+        </table>
+{% include "footer.html" %}

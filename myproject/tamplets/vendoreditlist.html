@@ -1,0 +1,62 @@
+{% include 'header.html' %}
+<div class="pagetitle">
+    <h1>Vendor</h1>
+    <nav>
+        <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item active">Vendor</li>
+        </ol>
+    </nav>
+</div><!-- End Page Title -->
+
+<section class="section dashboard">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Vendor Registration</h5>
+                    <form action="" method="POST" >
+                        <div class="col-12">
+                            <select name="transport" id="Trans" class="form-control">
+                                <option value="">--Select Transport--</option>
+                                {% for Trans in truck %}
+                                <option value="{{Trans.id}}" {% if Trans.id == vendordata.transId_id %} selected {% endif %}>{{Trans.name}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                
+                        <div class="col-12">
+                            {% csrf_token %}
+                            <label class="form-label">Company name</label>
+                            <input type="text" class="form-control" name="companyname" value="{{vendordata.cname}}" required>
+                        </div>
+
+                        <div class="col-12">
+                            <label class="form-label">Address</label>
+                            <textarea  class="form-control" name="address" required>{{vendordata.address}}</textarea>
+                        </div>
+
+                        <div class="col-12">
+                            <label class="form-control">GST</label>
+                            <input type="text" class="form-control" name="gst" value="{{vendordata.gst}}" required>
+                        </div>
+
+                        <div class="col-12">
+                            <label class="form-control">Contact no</label>
+                            <input type="text" class="form-control" name="contact_no" value="{{vendordata.contactno}}" required>
+                        </div>
+
+                        <div class="col-12">
+                            <label class="form-control">Contact person</label>
+                            <input type="text" class="form-control" name="contact_person" value="{{vendordata.contactperson}}" required>
+                        </div>
+
+                        <button class="btn btn-primary mt-3" type="submit">Submit</button>
+                    <a href="/signup" class="btn btn-primary mt-3">Already have an Account ?</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% include 'footer.html' %}

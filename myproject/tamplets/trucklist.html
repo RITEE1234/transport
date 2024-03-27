@@ -1,0 +1,53 @@
+{% include "header.html" %}
+<div class="pagetitle">
+    <h1>Truck Operator</h1>
+    <nav>
+        <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item active">Truck Operator</li>
+        </ol>
+    </nav>
+</div><!-- End Page Title -->
+<section class="section dashboard">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Truck Registration</h5>
+                    <div class="col-lg-12">
+                        <a class="btn btn-success float-end" href="/truck">
+                            <i class="bi bi-plus"></i>
+                        </a>
+                    </div>
+
+            <table class="table table-borderless">
+                <thead>
+                    <tr>
+                        <th scope="col">SR.no</th>
+                        <th scope="col">Driver name</th>
+                        <th scope="col">Driver Contact</th>
+                        <th scope="col">Truck no</th>
+                        <th scope="col">Owner name</th>
+                        <th scope="col">Owner Contact</th>
+                        <th scope="col">Ttype</th>
+                        <th scope="col">Edit</th>
+                        <th scope="col">Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {%for Truck in query%} 
+                        <tr>
+                            <td>{{forloop.counter}}</td>
+                            <td>{{Truck.dname}}</td>
+                            <td>{{Truck.dcontact}} </td>
+                            <td>{{Truck.truckno}}</td>
+                            <td>{{Truck.oname}}</td>
+                            <td>{{Truck.ocontact}}</td>
+                            <td>{{Truck.Ttype}}</td>
+                            <td><a class="btn btn-info" href="/edittruck/{{Truck.id}}"><i class="bi bi-pencil-fill"></i></a></td>
+                            <td><a class="btn btn-danger"href="/deletetruck/{{Truck.id}}"><i class="bi bi-trash"></i></a></td>
+                        </tr>
+                    {%endfor%}
+                </tbody>
+        </table>
+{% include "footer.html" %}

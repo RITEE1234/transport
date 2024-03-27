@@ -1,0 +1,62 @@
+{% include "header.html" %}
+{% load static %}
+<div class="pagetitle">
+    <h1>Transport</h1>
+    <nav>
+        <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item active">Transport</li>
+        </ol>
+    </nav>
+</div><!-- End Page Title -->
+<section class="section dashboard">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Transport Registration</h5>
+                    <div class="col-lg-12">
+                        <a class="btn btn-success float-end" href="/transport">
+                            <i class="bi bi-plus"></i>
+                        </a>
+                    </div>
+
+            <table class="table table-borderless">
+                <thead>
+                    <tr>
+                        <th scope="col">SR.no</th>
+                        <th scope="col">Username</th>
+                        <!-- <th scope="col">Password</th> -->
+                        <th scope="col">Company name</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">GST</th>
+                        <th scope="col">Contact no</th>
+                        <th scope="col">Contact person</th>
+                        <th scope="col">Edit</th>
+                        <th scope="col">Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {%for Trans in query%} 
+                        <tr>
+                            <td>{{forloop.counter}}</td>
+                            <td> {{Trans.name}}</td>
+                            <!-- <td>{{Trans.password}}</td> -->
+                            <td>{{Trans.cname}}</td>
+                            <td>{{Trans.address}} </td>
+                            <td>{{Trans.gst}}</td>
+                            <td>{{Trans.contactno}}</td>
+                            <td>{{Trans.contactperson}}</td>
+                            <td>
+                                <img src="{% static 'media/'%}{{Trans.image}}" alt="W3Schools.com" style="width:40px;height:40px;">
+                            </td>
+                            <td><a class="btn btn-info" href="/edittransport/{{Trans.id}}"><i class="bi bi-pencil-fill"></i></a></td>
+                            <td><a class="btn btn-danger"href="/deletetransport/{{Trans.id}}"><i class="bi bi-trash"></i></a></td>
+                        </tr>
+                    {%endfor%}
+                </tbody>
+        </table>
+{% include "footer.html" %}
+      
+                   
+        

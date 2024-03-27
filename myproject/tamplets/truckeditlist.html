@@ -1,0 +1,68 @@
+{% include 'header.html' %}
+<div class="pagetitle">
+    <h1>Truck Operator</h1>
+    <nav>
+        <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item active">Truck Operator</li>
+        </ol>
+    </nav>
+</div><!-- End Page Title -->
+
+<section class="section dashboard">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Truck Operator</h5>
+                    <form action="" method="POST" >
+                        <div class="col-12">
+                            <select name="transport" id="Trans">
+                                <option value="">--Select Transport--</option>
+                                {% for Trans in truck  %}
+                                <option value="{{Trans.id}}" {% if Trans.id == Truckdata.transId_id %} selected {% endif %}>{{Trans.name}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>        
+
+                        <div class="col-12">
+                            {% csrf_token %}
+                            <label class="form-label">Drivername</label>
+                            <input type="text" class="form-control" name="Dname" value="{{Truckdata.dname}}" required>
+                        </div>
+
+                        <div class="col-12">
+                            <label class="form-control">Driver contactno</label>
+                            <input type="text" class="form-control" name="Dcontactno" value="{{Truckdata.dcontact}}" required>
+                        </div>
+
+                        <div class="col-12">
+                            <label class="form-control">Truck no</label>
+                            <input type="text" class="form-control" name="Truckno" value="{{Truckdata.truckno}}" required>
+                        </div>
+
+                        <div class="col-12">
+                            <label class="form-control">Ownername</label>
+                            <input type="text" class="form-control" name="Oname" value="{{Truckdata.contactperson}}" required>
+                        </div>
+
+                        <div class="col-12">
+                            <label class="form-control">Owner contactno</label>
+                            <input type="text" class="form-control" name="Ocontactno" value="{{Truckdata.contactperson}}" required>
+                        </div>
+
+                        <div class="col-12">
+                            <label class="form-control">Truck type</label>
+                            <input type="text" class="form-control" name="Ttype" value="{{Truckdata.contactperson}}" required>
+                        </div>
+
+
+                        <button class="btn btn-primary mt-3" type="submit">Submit</button>
+                    <a href="/signup" class="btn btn-primary mt-3">Already have an Account ?</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    {% include 'footer.html' %}

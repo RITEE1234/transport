@@ -1,0 +1,54 @@
+{% include "header.html" %}
+<div class="pagetitle">
+    <h1>Vendor</h1>
+    <nav>
+        <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item active">Vendor</li>
+        </ol>
+    </nav>
+</div><!-- End Page Title -->
+<section class="section dashboard">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Vendor Registration</h5>
+                    <div class="col-lg-12">
+                        <a class="btn btn-success float-end" href="/Vendor">
+                            <i class="bi bi-plus"></i>
+                        </a>
+                    </div>
+
+            <table class="table table-borderless">
+                <thead>
+                    <tr>
+                        <th scope="col">SR.no</th>
+                        <th scope="col">Company name</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">GST</th>
+                        <th scope="col">Contact no</th>
+                        <th scope="col">Contact person</th>
+                        <th scope="col">Edit</th>
+                        <th scope="col">Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {%for Register in query%} 
+                        <tr>
+                            <td>{{forloop.counter}}</td>
+                            <td>{{Register.cname}}</td>
+                            <td>{{Register.address}} </td>
+                            <td>{{Register.gst}}</td>
+                            <td>{{Register.contactno}}</td>
+                            <td>{{Register.contactperson}}</td>
+                            <td><a class="btn btn-info" href="/editvendor/{{Register.id}}"><i class="bi bi-pencil-fill"></i></a></td>
+                            <td><a class="btn btn-danger"href="/deletevendor/{{Register.id}}"><i class="bi bi-trash"></i></a></td>
+                        </tr>
+                    {%endfor%}
+                </tbody>
+        </table>
+{% include "footer.html" %}
+      
+                   
+        

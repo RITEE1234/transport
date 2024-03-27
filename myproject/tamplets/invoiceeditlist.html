@@ -1,0 +1,123 @@
+{% include 'header.html' %}
+<div class="pagetitle">
+    <h1>Invoice</h1>
+    <nav>
+        <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item active">Invoice</li>
+        </ol>
+    </nav>
+</div><!-- End Page Title -->
+
+<section class="section dashboard">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Invoice Registration</h5>
+                    <form action="" method="POST" >
+                                        
+                        <div class="col-12">
+                            {% csrf_token %}
+                            <label class="form-label">Name</label>
+                            <input type="text" class="form-control" name="name" value="{{invoicedata.name}}" required>
+                        </div>
+
+                        <div class="col-12">
+                            <label class="form-label">Address</label>
+                            <textarea  class="form-control" name="address" required>{{invoicedata.address}}</textarea>
+                        </div>
+
+                        <div class="col-12">
+                            <label class="form-control">GST</label>
+                            <input type="text" class="form-control" name="gst" value="{{invoicedata.gst}}" required>
+                        </div>
+                        
+
+                        <div class="col-12">
+                            <label class="form-control">From</label>
+                            <input type="text" class="form-control" name="from" value="{{invoicedata.From}}" required>
+                        </div>
+
+                        <div class="col-12">
+                            <label class="form-control">To</label>
+                            <input type="text" class="form-control" name="to" value="{{invoicedata.To}}" required>
+                        </div>
+                        <div class="row">
+                            <div class="col-3">
+                                
+                            </div>
+        
+                            <div class="col-2">
+                                
+                            </div>
+        
+                            <div class="col-2">
+                                
+                            </div>
+                            <div class="col-2">
+                                
+                            </div>
+        
+                        </div>
+                        <div id="mainrow">
+                            <a class="btn btn-info button" href="javascript:;">+</a>
+                            <div class="row border border-success">
+                                <div class="col-3 mt-3">
+                                    <label>Truck No</label>
+                                    <select name="Truck []" id="Truck_no" class="form-control">
+                                        <option value="">--Select Truck no--</option>
+                                        {%for tr in query%}
+                                            <option value="{{tr.id}}">{{tr.truck}}</option>
+                                        {%endfor%}
+                                    </select>
+                                </div>
+        
+                                <div class="col-3 mt-3">
+                                    <label class="form-control">Date</label>
+                                    <input type="date" class="form-control" name="c_date" value="{{inv_date}}"required>
+                                </div>
+                                <div class="col-3 mt-3">
+                                    <label class="form-control">Invoice No</label>
+                                    <input type="text" class="form-control" name="c_inv_no"value="{{inv_no}}" required>
+                                </div>
+                                <div class="col-sm-3 mt-3">
+                                    <label class="form-control">LR No</label>
+                                    <input type="text" class="form-control" name="lr_no" value="{{Lr_no}}" required>
+                                </div>
+
+                            <div class="col-3  mt-3">
+                                <label class="form-control">Dsicriptions of Goods</label>
+                                <input type="text" class="form-control" name="discriptions" value="{{Dsicriptions1}}" required>
+                            </div>
+        
+                            <div class="col-3  mt-3">
+                                <label class="form-control">Qty weight</label>
+                                <input type="text" class="form-control" name="weight" value="{{qty_weight1}}" required>
+                            </div>
+        
+                            <div class="col-3  mt-3">
+                                <label class="form-control">Rate</label>
+                                <input type="text" class="form-control" name="rate" value="{{Rate_values1}}" required>
+                            </div>
+                            <div class="col-3  mt-3">
+                                <label class="form-control">Amount</label>
+                                <input type="text" class="form-control" name="amount" value="{{Amount_values1}}" required>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <button class="btn btn-primary mt-3" type="submit">Submit</button>
+                            </div>
+                            <div class="col-sm-3">
+                               <a href="/signup" class="btn btn-primary mt-3">Already have an Account ?</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% include 'footer.html' %}

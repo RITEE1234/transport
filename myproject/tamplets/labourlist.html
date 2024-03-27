@@ -1,0 +1,47 @@
+{% include "header.html" %}
+<div class="pagetitle">
+    <h1>Labour</h1>
+    <nav>
+        <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item active">Labour Registration</li>
+        </ol>
+    </nav>
+</div><!-- End Page Title -->
+<section class="section dashboard">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Labour Registration</h5>
+                    <div class="col-lg-12">
+                        <a class="btn btn-success float-end" href="/labour">
+                            <i class="bi bi-plus"></i>
+                        </a>
+                    </div>
+
+            <table class="table table-borderless">
+                <thead>
+                    <tr>
+                        <th scope="col">SR.no</th>
+                        <th scope="col">Labour name</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">Contact no</th>
+                        <th scope="col">Edit</th>
+                        <th scope="col">Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {%for Worker in query%} 
+                        <tr>
+                            <td>{{forloop.counter}}</td>
+                            <td>{{Worker.lname}}</td>
+                            <td>{{Worker.address}} </td>
+                            <td>{{Worker.contactno}}</td>
+                            <td><a class="btn btn-info" href="/editlabour/{{Worker.id}}"><i class="bi bi-pencil-fill"></i></a></td>
+                            <td><a class="btn btn-danger"href="/deletelabour/{{Worker.id}}"><i class="bi bi-trash"></i></a></td>
+                        </tr>
+                    {%endfor%}
+                </tbody>
+        </table>
+{% include "footer.html" %}

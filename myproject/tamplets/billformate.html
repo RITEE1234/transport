@@ -1,0 +1,149 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice</title>
+    <style>
+        .container {
+            display: flex;
+            align-items: left; 
+            justify-content: left;
+        }
+        
+        img {
+            max-width: 110px;
+            max-height:100%;
+            float: left;
+            padding-top: -5px;;
+        }
+        h1 {
+            text-transform: uppercase; 
+            color:#c40001;
+            text-align: center;
+            vertical-align: text-top;
+            float: left;
+            padding-top: 15px;
+        }
+        .text,.image {
+            text-transform: uppercase; 
+            font-size:0.7em;
+            color:#c40001;
+            text-align: center;
+            vertical-align: text-top;
+        }
+        td, th {
+            border: 1px solid;
+            vertical-align: top;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        tr.no-bottom-border td {
+            border-bottom: none !important;
+          } 
+    </style>
+</head>
+<body>
+    <table style="width: 100%;border-color:#010101;">
+        <tr class="no-bottom-border">
+            <td colspan="10" style="text-align: right;">Mob: 9867322828 </td>
+        </tr>
+        <tr>
+            <td colspan="10"><p style="text-align:center"><u>TAX INVOICE</u><br />Subject to Thane Jurisdiction</p></td>
+        </tr>
+        <tr>
+            <td colspan="10">
+                <div class="container">
+                     <img src="{% static 'tamplets/icon.jpg.jpeg' %}"> 
+                    <h1>Shree MAHALAXMI ROADLINES</h1>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="10" style="text-align: center">FLEET OWNER & TRANSPORT CONTRACTORS</td>
+        </tr>
+        <tr>
+            <td colspan="10" style="text-align:center">A-302, 3rd Floor, Nirmal Park Building No 2, Bhayandar(E), Thane - 401105</td> 
+        </tr>
+        <tr>
+            <td colspan="10" style="text-align: center">GSTIN NO: 27AOZPV7508P1ZI<br /><br/></td>
+        </tr>
+        <tr>
+            <td colspan="5" style="text-align: left;" colspan="2">Name : {{invoice.name}}</td>
+            <td colspan="2" style="text-align: left;" colspan="2">Invoice No : {{invoice.fy}}/{{invoice.inv_no}}</td>
+            <td colspan="3" style="text-align: left;" colspan="2">Date : {{ invoice.inv_date|date:'d-m-Y' }} </td>
+        </tr>
+        <tr>
+            <td colspan="5" style="text-align: left;" colspan="2">Address :  {{invoice.address}}</td>
+            <td colspan="5" rowspan="2" style="text-align: left;" colspan="2">From : {{invoice.From}} To {{invoice.To}}</td>
+        </tr>
+        <tr>
+            <td colspan="5" style="text-align: left;" colspan="2">GSTIN NO : {{invoice.gst}}</td>
+        </tr>
+
+        <tr>
+            <th scope="col">S.N</th>
+            <th scope="col">INVOICE NO</th>
+            <th scope="col"> INVOICE Date</th>
+            <th scope="col">L.R. NO.</th>
+            <th scope="col">TRUCK NO</th>
+            <th scope="col">Description of Goods</th>
+            <th scope="col">Qty weight</th>
+            <th scope="col">Rate</th>
+            <th scope="col" colspan="2">Amount Rs</th>
+        </tr>
+        {% for inv_no, inv_date, truck, lr_no, desc, qty, rate, amt in data %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{invoice.inv_no}}</td>
+                <td>{{ invoice.inv_date|date:'d-m-Y' }}</td>
+                <td>{{ lr_no }}</td>
+                <td>{{ truck }}</td>
+                <td>{{ desc }}</td>
+                <td>{{ qty }}</td>
+                <td>{{ rate }}</td>
+                <td colspan="2">{{ amt }}</td>
+            </tr>
+        {% endfor %}
+        <tr>
+            <td colspan="6" style="text-align: left;padding-top: 2em;" colspan="2">Bank Details :</td>
+            <td colspan="3">Total Taxable Value</td>
+            <td>1,53,000/-</td>
+        </tr>
+        <tr>
+            <td colspan="6" style="text-align: left;">Bank Name :</td>
+            <td colspan="3">GST/Service Tax</td>
+            <td>27,540/-</td>
+        </tr>
+        <tr>
+            <td colspan="6" style="text-align: left;">A/C. No :</td>
+            <td colspan="3">Round Off</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <td colspan="6" style="text-align: left;">IFSC Code :</td>
+            <td colspan="3" rowspan="2">TOTAL</td>
+            <td rowspan="2">1,80,540/-</td>
+        </tr>
+        <tr>
+            <td colspan="6" style="text-align: left;">Branch :</td>
+        </tr>
+        <tr>
+            <td colspan="10">Total Invoice Value(in Words): One Lakh Eighty Thousand Five Hundred Forty Only</td>
+        </tr>
+        <tr>
+            <td colspan="6" rowspan="3">E & O. E.<br />
+                Subject to Thane Jurisdiction, Payments to be made through Banking Channels only, <br />
+                Overdue Payment will attract interest @24%, if any complain intimation to be given in <br />
+                seven days from receipt of material. The Buyer is responsible to <br />TRANSPORT’S COPY OF INVOICE at the time of unloading.
+                </td>
+            <td colspan="4" rowspan="3"></td>
+        </tr>
+    </table>
+
+</body>
+</html>
